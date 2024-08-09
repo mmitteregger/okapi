@@ -8,8 +8,8 @@ authors = [
 edition = "2021"
 
 [dependencies]
-rocket = { version = "=0.5.0", default-features = false, features = [ "json", "secrets" ] }
+rocket = { git = "https://github.com/rwf2/Rocket", default-features = false, features = [ "json", "secrets" ] }
 rocket_okapi = { path = "../../rocket-okapi", features = [ "rapidoc", "swagger", "secrets" ] }
 serde = "1.0"
-tokio = "1.6"
+tokio = { version = "1.6", features = ["macros"] }
 serde_json = "1.0"

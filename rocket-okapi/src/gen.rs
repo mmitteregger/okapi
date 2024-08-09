@@ -119,7 +119,7 @@ impl OpenApiGenerator {
 }
 
 fn set_operation(path_item: &mut PathItem, method: Method, op: Operation) {
-    use Method::{Connect, Delete, Get, Head, Options, Patch, Post, Put, Trace};
+    use Method::{Delete, Get, Head, Options, Patch, Post, Put, Trace};
     let option = match method {
         Get => &mut path_item.get,
         Put => &mut path_item.put,
@@ -129,8 +129,8 @@ fn set_operation(path_item: &mut PathItem, method: Method, op: Operation) {
         Head => &mut path_item.head,
         Patch => &mut path_item.patch,
         Trace => &mut path_item.trace,
-        // Connect not available in OpenAPI3. Maybe should set in extensions?
-        Connect => return,
+        // Not available in OpenAPI3. Maybe should set in extensions?
+        _ => return,
     };
     assert!(option.is_none());
     option.replace(op);

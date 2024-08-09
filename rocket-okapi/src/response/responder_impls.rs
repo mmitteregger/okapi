@@ -11,6 +11,7 @@ use rocket::serde::json::{Json, Value};
 use schemars::JsonSchema;
 use serde::Serialize;
 use std::sync::Arc;
+use rocket::either;
 
 type Result = crate::Result<Responses>;
 
@@ -72,7 +73,7 @@ impl OpenApiResponderInner for &[u8] {
     }
 }
 
-impl<L, R> OpenApiResponderInner for rocket::Either<L, R>
+impl<L, R> OpenApiResponderInner for either::Either<L, R>
 where
     L: OpenApiResponderInner,
     R: OpenApiResponderInner,
